@@ -36,7 +36,6 @@ namespace OCPP.Core.Server
 {
     public partial class OCPPMiddleware
     {
-
         /// <summary>
         /// Creates a short, collision-resistant unique message ID.
         /// Some chargers (e.g. eNovates firmware) truncate the echoed OCPP UniqueId
@@ -238,7 +237,7 @@ namespace OCPP.Core.Server
             OCPPMessage msgOut = new OCPPMessage();
             msgOut.MessageType = "2";
             msgOut.Action = "GetConfiguration";
-            msgOut.UniqueId = Guid.NewGuid().ToString("N");
+            msgOut.UniqueId = NewShortUniqueId();
             msgOut.JsonPayload = jsonRequest;
             msgOut.TaskCompletionSource = new TaskCompletionSource<string>();
 
@@ -283,7 +282,7 @@ namespace OCPP.Core.Server
             OCPPMessage msgOut = new OCPPMessage();
             msgOut.MessageType = "2";
             msgOut.Action = "ChangeConfiguration";
-            msgOut.UniqueId = Guid.NewGuid().ToString("N");
+            msgOut.UniqueId = NewShortUniqueId();
             msgOut.JsonPayload = jsonRequest;
             msgOut.TaskCompletionSource = new TaskCompletionSource<string>();
 
